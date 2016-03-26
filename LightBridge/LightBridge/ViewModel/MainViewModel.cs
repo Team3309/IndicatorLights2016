@@ -21,7 +21,7 @@ namespace LightBridge.ViewModel
         public bool IsBlue { get; set; }
         public bool IsLocked { get; set; }
         public double Power { get; set; }
-        public string RobotIP { get; set; } = "roboRIO-3309-FRC";
+        public string RobotIP { get; set; } = Properties.Settings.Default.RobotIP;
         public ObservableCollection<string> ComPorts { get; set; }
         public string SelectedComPort { get; set; }
         public string ConnectionStatus { get; set; } = "Not Connected";
@@ -32,7 +32,7 @@ namespace LightBridge.ViewModel
         public RelayCommand ConnectToRobotCommand { get; private set; }
 
         // -- Brightness
-        private int _Brightness = 128;
+        private int _Brightness = Properties.Settings.Default.Brightness;
         public int Brightness
         {
             get { return _Brightness; }
@@ -40,7 +40,7 @@ namespace LightBridge.ViewModel
             {
                 if (value == _Brightness) return;
                 _Brightness = value;
-                Send("bright", value);
+                UpdateBrightness();
             }
         }
 
@@ -67,6 +67,8 @@ namespace LightBridge.ViewModel
 
         public MainViewModel()
         {
+            //RobotIP = 
+
             // Cbjects
             ComPorts = new ObservableCollection<string>();
 
@@ -99,6 +101,14 @@ namespace LightBridge.ViewModel
             ConnectToRobot();
         }
 
+        public override void Cleanup()
+        {
+            Properties.Settings.Default.RobotIP = RobotIP;
+            Properties.Settings.Default.Brightness = Brightness;
+            Properties.Settings.Default.Save();
+            base.Cleanup();
+        }
+
         private void ConnectToArduino()
         {
             if ((_Port != null) && (_Port.IsOpen))
@@ -119,12 +129,12 @@ namespace LightBridge.ViewModel
                     RefreshComPorts();
                 }
 
-                Brightness = 32;
-
                 if ((_Table == null) || (!_Table.IsConnected))
                 {
                     Send("connect", 0);
                 }
+
+                UpdateBrightness();
             }
         }
 
@@ -176,6 +186,11 @@ namespace LightBridge.ViewModel
                 Console.WriteLine($"message '{message}' failed, port not open.");
             }
 
+        }
+
+        private void UpdateBrightness()
+        {
+            Send("bright", Brightness);
         }
 
         private void OnTableValueChanged(object sender, TableValueChanged e)

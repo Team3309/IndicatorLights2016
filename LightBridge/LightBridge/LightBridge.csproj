@@ -7,8 +7,8 @@
     <ProjectGuid>{1F752D78-F7CB-475E-AD65-5E7156405892}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LightBridge2</RootNamespace>
-    <AssemblyName>LightBridge2</AssemblyName>
+    <RootNamespace>LightBridge</RootNamespace>
+    <AssemblyName>LightBridge</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
