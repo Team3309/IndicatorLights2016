@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LightBridge.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,10 @@ namespace LightBridge
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnExit(ExitEventArgs e)
+        {
+            ViewModelLocator.Cleanup();
+            base.OnExit(e);
+        }
     }
 }

@@ -1,7 +1,7 @@
 /*
   In App.xaml:
   <Application.Resources>
-      <vm:ViewModelLocator xmlns:vm="clr-namespace:LightBridge2"
+      <vm:ViewModelLocator xmlns:vm="clr-namespace:LightBridge"
                            x:Key="Locator" />
   </Application.Resources>
   
@@ -24,11 +24,14 @@ namespace LightBridge.ViewModel
     /// </summary>
     public class ViewModelLocator
     {
+        private static ViewModelLocator _Instance;
+
         /// <summary>
         /// Initializes a new instance of the ViewModelLocator class.
         /// </summary>
         public ViewModelLocator()
         {
+            _Instance = this;
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
             ////if (ViewModelBase.IsInDesignModeStatic)
@@ -55,7 +58,7 @@ namespace LightBridge.ViewModel
         
         public static void Cleanup()
         {
-            // TODO Clear the ViewModels
+            _Instance.Main.Cleanup();   
         }
     }
 }
