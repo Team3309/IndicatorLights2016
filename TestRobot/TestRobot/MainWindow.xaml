@@ -1,0 +1,20 @@
+﻿<Window x:Class="TestRobot.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LightBridge"
+        mc:Ignorable="d"
+        Title="TestRobot" Height="145.432" Width="251.032">
+    <Window.Resources>
+        <local:MainWindowVM x:Key="MainWindowVMDataSource" d:IsDataSource="True"/>
+    </Window.Resources>
+    <Grid DataContext="{Binding Source={StaticResource MainWindowVMDataSource}}">
+        <StackPanel Margin="10">
+            <CheckBox x:Name="checkBox" Content="Red" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="{Binding IsRed}" Margin="0,0,0,5"/>
+            <CheckBox x:Name="checkBox_Copy" Content="Blue" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="{Binding IsBlue}" Margin="0,0,0,5"/>
+            <CheckBox x:Name="checkBox_Copy1" Content="Locked" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="{Binding IsLocked}" Margin="0,0,0,5"/>
+            <Slider x:Name="slider" Height="22" VerticalAlignment="Top" Maximum="105" Value="{Binding Power}"/>
+        </StackPanel>
+    </Grid>
+</Window>
