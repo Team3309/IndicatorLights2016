@@ -32,3 +32,6 @@ C:\Users\Alya\Documents\Visual Studio 2015\Projects\TestRobot\TestRobot\obj\Debu
 C:\Users\Alya\Documents\Visual Studio 2015\Projects\TestRobot\TestRobot\obj\Debug\TestRobot.g.resources
 C:\Users\Alya\Documents\Visual Studio 2015\Projects\TestRobot\TestRobot\obj\Debug\TestRobot.Properties.Resources.resources
 C:\Users\Alya\Documents\Visual Studio 2015\Projects\TestRobot\TestRobot\obj\Debug\TestRobot.csproj.GenerateResource.Cache
+C:\Users\Alya\Documents\GitHub\IndicatorLights2016\TestRobot\TestRobot\bin\Debug\TestRobot.exe.config
+C:\Users\Alya\Documents\GitHub\IndicatorLights2016\TestRobot\TestRobot\obj\Debug\TestRobot.exe
+C:\Users\Alya\Documents\GitHub\IndicatorLights2016\TestRobot\TestRobot\obj\Debug\TestRobot.pdb
