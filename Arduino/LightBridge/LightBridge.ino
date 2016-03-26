@@ -5,7 +5,7 @@
 
 #define PIN            6
 #define NUMPIXELS      8
-#define ANIMDURATION   300
+#define ANIMDURATION   75
 
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 SerialCommand SCmd;
@@ -54,8 +54,12 @@ void loop()
   
   if (IsReadyToShoot())
   {
-    byte val = map(FlashAnim, 0, ANIMDURATION, 255, 0);
-    SetColor(0, max(val, 64), 0);
+    byte val = 0;
+    if (FlashAnim > ANIMDURATION / 2)
+    {
+      val = 255;
+    }
+    SetColor(0, val, 0);
     
     pixels.show();
 
