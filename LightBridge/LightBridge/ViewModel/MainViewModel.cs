@@ -67,25 +67,23 @@ namespace LightBridge.ViewModel
 
         public MainViewModel()
         {
-            //RobotIP = 
-
-            // Cbjects
+            // -- Objects
             ComPorts = new ObservableCollection<string>();
 
-            // Commands
+            // -- Commands
             RefreshComPortsCommand = new RelayCommand(RefreshComPorts);
             ConnectToArduinoCommand = new RelayCommand(ConnectToArduino);
             ConnectToRobotCommand = new RelayCommand(ConnectToRobot);
 
+            // -- Stop here if in the designer!
+            if (!IsInDesignMode)
+            {
+                NonDesignerCtor();
+            }
+        }
 
-
-
-
-            // --------------------------------------------------------------------------------------------------------------------------
-            // Don't do anything below in the designer!
-            // --------------------------------------------------------------------------------------------------------------------------
-            if (IsInDesignMode) return;
-
+        private void NonDesignerCtor()
+        {
             // Table listener because NetworkTable doesn't have events (this is dumb; Need to write a wrapper that just processes events)
             _TableListener = new TableListener();
             _TableListener.OnValueChanged += OnTableValueChanged;
