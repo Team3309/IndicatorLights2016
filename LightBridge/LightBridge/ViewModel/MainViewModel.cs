@@ -2,10 +2,9 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using NetworkTables;
 using System;
-using System.Linq;
 using System.Collections.ObjectModel;
 using System.IO.Ports;
-using System.Windows.Data;
+using System.Linq;
 using System.Windows;
 
 namespace LightBridge.ViewModel
@@ -195,22 +194,22 @@ namespace LightBridge.ViewModel
         {
             if (e.Key == "Red")
             {
-                IsRed = (bool)e.Value;
+                IsRed = _Table.GetBoolean("Red", false);
                 Send("red", IsRed ? 1 : 0);
             }
             else if (e.Key == "Blue")
             {
-                IsBlue = (bool)e.Value;
+                IsBlue = _Table.GetBoolean("Blue", false);
                 Send("blu", IsBlue ? 1 : 0);
             }
             else if (e.Key == "Locked")
             {
-                IsLocked = (bool)e.Value;
+                IsLocked = _Table.GetBoolean("Locked", false);
                 Send("lck", IsLocked ? 1 : 0);
             }
             else if (e.Key == "Power")
             {
-                Power = (double)e.Value;
+                Power = _Table.GetNumber("Power", 0);
                 Send("pwr", Math.Max(0, Math.Min((int)(Power / 100 * 255), 255)));
             }
         }
